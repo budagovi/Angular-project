@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-project';
+
+
+  constructor() {
+    fetch("http://lukabudagovi-001-site1.atempurl.com/api/User/jobs").then(data => {console.log(data)})
+    console.log('test');
+  }
 }
