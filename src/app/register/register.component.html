@@ -1,0 +1,48 @@
+<p>register works!</p>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-control">
+    <label for="firstname">Firstname:</label>
+    <input 
+      type="text" 
+      id="firstname" 
+      placeholder="Enter your name" 
+      formControlName="firstname"
+    >
+  </div>
+
+  <div class="form-control">
+    <label for="lastname">Lastname:</label>
+    <input type="text" id="lastname" placeholder="Enter your lastname" formControlName="lastname">
+  </div>
+  
+  <div class="form-control">
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter email" formControlName="email">
+  </div>
+
+  <div class="form-control">
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+  </div>
+
+  <div class="form-control">
+    <label for="confirmPass">Confirm Password:</label>
+    <input type="password" id="confirmPass" formControlName="confirmPass">
+  </div>
+
+  <div class="form-control">
+    <label for="firstname">Select Job:</label>
+    <span *ngIf="jobs.length <= 0">No open positions available</span>
+    <select name="jobId" id="jobId" formControlName="jobId" *ngIf="jobs.length > 0">
+      <option [defaultSelected]="">Select Position</option>
+      <option *ngFor="let job of jobs" value={{job.id}}>
+        {{job.title}}
+      </option>
+    </select>
+  </div>
+
+  <input type="submit" [disabled]="registerForm.invalid" value="Sign up">
+
+</form>

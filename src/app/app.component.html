@@ -1,1 +1,15 @@
-<h1>test</h1>
+<nav>
+  <span>droebiti navigacia</span>
+  <ul>
+    <li><a routerLink="/">root</a></li>
+    <li><a routerLink="/sign-up">registration</a></li>
+  </ul>
+</nav>
+
+<button (click)="addJob()">add job</button>
+<br>
+<button (click)="deleteUser()">delete user</button>
+
+<router-outlet>
+  
+</router-outlet>
