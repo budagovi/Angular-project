@@ -1,9 +1,10 @@
 <nav>
-  <span>droebiti navigacia</span>
-  <ul>
-    <li><a routerLink="/">root</a></li>
-    <li><a routerLink="/sign-up">registration</a></li>
-  </ul>
+  <p class="logo">Shift Controller</p>
+  <div class="flex"> 
+    <a routerLink="/">Home</a>
+    <a routerLink="/sign-up">Registration</a>
+  </div>
+  <button>Log out</button>
 </nav>
 
 <button (click)="addJob()">add job</button>
@@ -11,5 +12,4 @@
 <button (click)="deleteUser()">delete user</button>
 
 <router-outlet>
-  
 </router-outlet>

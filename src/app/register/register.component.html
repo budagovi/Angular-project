@@ -1,47 +1,63 @@
-<p>register works!</p>
-
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
   <div class="form-control">
     <label for="firstname">Firstname:</label>
-    <input 
-      type="text" 
-      id="firstname" 
-      placeholder="Enter your name" 
-      formControlName="firstname"
-    >
+    <input type="text" id="firstname" placeholder="Enter your first name" formControlName="firstname">
+    <div *ngIf="form.firstname.touched && form.firstname.invalid" class="error-message">
+      Please fill in the input.
+    </div>
   </div>
 
   <div class="form-control">
     <label for="lastname">Lastname:</label>
-    <input type="text" id="lastname" placeholder="Enter your lastname" formControlName="lastname">
+    <input type="text" id="lastname" placeholder="Enter your last name" formControlName="lastname">
+    <div *ngIf="form.lastname.touched && form.lastname.invalid" class="error-message">
+      Please fill in the input.
+    </div>
   </div>
-  
+
   <div class="form-control">
     <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="Enter email" formControlName="email">
+    <input type="text" id="email" placeholder="Enter your email" formControlName="email">
+    <div *ngIf="form.email.touched && form.email.invalid" class="error-message">
+      Please fill in the input.
+    </div>
   </div>
 
   <div class="form-control">
     <label for="password">Password:</label>
-    <input type="password" id="password" formControlName="password">
+    <input type="password" id="password" placeholder="Enter password" formControlName="password"
+      [ngClass]="{'inputError': form.password.errors?.['mismatch']}">
+    <div *ngIf="form.password.touched && form.password.invalid" class="error-message">
+      Please fill in the input.
+    </div>
   </div>
 
   <div class="form-control">
     <label for="confirmPass">Confirm Password:</label>
-    <input type="password" id="confirmPass" formControlName="confirmPass">
+    <input type="password" id="confirmPass" placeholder="Enter password" formControlName="confirmPass"
+      [ngClass]="{'inputError': form.confirmPass.errors?.['mismatch']}">
+    <div *ngIf="form.confirmPass.touched && form.confirmPass.invalid" class="error-message">
+      Please fill in the input.
+    </div>
   </div>
 
+
   <div class="form-control">
-    <label for="firstname">Select Job:</label>
+    <label for="jobId">Select Job:</label>
     <span *ngIf="jobs.length <= 0">No open positions available</span>
     <select name="jobId" id="jobId" formControlName="jobId" *ngIf="jobs.length > 0">
-      <option [defaultSelected]="">Select Position</option>
-      <option *ngFor="let job of jobs" value={{job.id}}>
+      <option disabled selected>Select Position</option>
+      <option *ngFor="let job of jobs" [value]="job.id">
         {{job.title}}
       </option>
     </select>
+    <div *ngIf="form.jobId.touched && form.jobId.invalid" class="error-message">
+      Please fill in the input.
+    </div>
   </div>
+
+
 
   <input type="submit" [disabled]="registerForm.invalid" value="Sign up">
 

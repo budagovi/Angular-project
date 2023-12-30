@@ -1,3 +1,40 @@
-nav{
-    display: flex;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+nav {
+  position: sticky;
+  width: 98vw;
+  background-color: #121212;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 40px;
+  border-radius: 0.5rem;
+  font-family: "Montserrat", sans-serif !important;
+}
+nav .flex a {
+  margin: 0 1rem;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+nav .logo {
+  color: white;
+  margin-left: 5%;
+  margin-right: 3%;
+  margin-block: auto;
+  font-size: 20px;
+}
+
+button {
+  display: block;
+  border-radius: 0.5rem;
+  padding: 5px 10px;
+  font-size: 15px;
+  text-transform: capitalize;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  text-align: center;
 }
