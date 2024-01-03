@@ -8,26 +8,27 @@ const authUrl = "http://lukabudagovi-001-site1.atempurl.com/api/User/";
   providedIn: 'root'
 })
 
-export class AuthService  {
+export class AuthService {
 
   constructor(private http: HttpClient) { }
 
   // Sign in handler
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(authUrl + 'login/json', {
-      email,
-      password
-    }, 
-    {
-      headers: {
-        "Content-type": 'application/json'
-      }
-    });
+  login(email: string | undefined, password: string | undefined): Observable<any> {
+    return this.http.post(authUrl + 'login', {
+      "email": email,
+      "password": password,
+    },
+      {
+        responseType: 'text',
+        headers: {
+          "Content-type": 'application/json'
+        }
+      });
   }
 
   //Sign up handler
-  register(firstName: string | undefined, lastName:string | undefined, email: string | undefined, password: string | undefined, jobId:number | null): Observable<any> {
-    return this.http.post('http://lukabudagovi-001-site1.atempurl.com/api/User/register', {
+  register(firstName: string | undefined, lastName: string | undefined, email: string | undefined, password: string | undefined, jobId: number | null): Observable<any> {
+    return this.http.post(authUrl + 'register', {
       "firstName": firstName,
       "lastName": lastName,
       "email": email,

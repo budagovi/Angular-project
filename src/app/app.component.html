@@ -3,8 +3,9 @@
   <div class="flex"> 
     <a routerLink="/">Home</a>
     <a routerLink="/sign-up">Registration</a>
+    <a routerLink="/sign-in">Login</a>
   </div>
-  <button>Log out</button>
+  <button *ngIf="isLoggedIn()" (click)="logOut()">Log out</button>
 </nav>
 
 <button (click)="addJob()">add job</button>

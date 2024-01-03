@@ -11,29 +11,42 @@ export class TokenService {
   constructor() { }
 
   logOut(): void {
-    window.sessionStorage.clear();
+    localStorage.clear();
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string | null {
-    return window.sessionStorage.getItem(TOKEN_KEY);
-  }
-
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    return localStorage.getItem(TOKEN_KEY);
   }
 
   public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (token) {
+      const decodedToken = this.decodeToken(token);
+      
+      return {
+        role: decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'],
+        email: decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
+        firstName: decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'],
+        lastname: decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'],
+        userId: decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
+      }
     }
-
     return {};
+  }
+
+  //JWT TOKEN DECODER
+  private decodeToken(token: string): any {
+    try {
+      //console.log(JSON.parse(atob(token.split('.')[1])))
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+      console.error('Error decoding JWT token:', e);
+      return null;
+    }
   }
 }

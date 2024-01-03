@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { AdminService } from './services/admin.service';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,9 @@ export class AppComponent {
 
   constructor(
     private authService: AuthService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private tokenService: TokenService,
+    private router: Router
   ) {
     fetch('http://lukabudagovi-001-site1.atempurl.com/api/User/users')
       .then((response) => response.json())
@@ -23,9 +26,22 @@ export class AppComponent {
     //   .then(response => response.json())
     //   .then(data => console.log(JSON.stringify(data)));
 
-    // fetch("http://lukabudagovi-001-site1.atempurl.com/api/Admin/delete-user/89", {
+    // fetch("http://lukabudagovi-001-site1.atempurl.com/api/Admin/delete-user/93", {
     //   method: "delete"
     // })
+
+
+    tokenService.getUser();
+  }
+
+
+  isLoggedIn() {
+    return this.tokenService.getToken();
+  }
+
+  logOut() {
+    this.tokenService.logOut();
+    this.router.navigate(['/login']);
   }
 
   addJob() {
