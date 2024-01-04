@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 const apiAdminUrl = "http://lukabudagovi-001-site1.atempurl.com/api/Admin/";
 
@@ -7,51 +8,61 @@ const apiAdminUrl = "http://lukabudagovi-001-site1.atempurl.com/api/Admin/";
   providedIn: 'root'
 })
 export class AdminService {
+  private apiUrl = 'http://lukabudagovi-001-site1.atempurl.com/api/Admin/';
 
   constructor(private http: HttpClient) { }
 
-  //approve schedule request
+  // approve schedule request
 
-  //change user role
-  changeUserRole(userId: number, newRoleId: number) {
-    return this.http.post(apiAdminUrl + "change-user-role", {
+  // change user role
+  changeUserRole(userId: number, newRoleId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}change-user-role`, {
       "userId": userId,
       "newRoleId": newRoleId
     }, {
       headers: {
         "Content-Type": "application/json"
       }
-    })
+    });
   }
-  
-  //add new job
-  addJob(jobTitle: string) {
-    return this.http.post(apiAdminUrl + "add-new-job", {
+
+  // add new job
+  addJob(jobTitle: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}add-new-job`, {
       "title": jobTitle
     }, {
       headers: {
         "Content-Type": "application/json"
       }
-    })
+    });
   }
 
-  //delete existing user
-  deleteUser(userId: number) {
-    return this.http.delete(apiAdminUrl + "delete-user/" + userId, {
+  // delete existing user
+  deleteUser(userId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}delete-user/${userId}`, {
       headers: {
         "Content-Type": "application/json"
       }
-    })
+    });
   }
 
-  //delete existing job
-  deleteJob(jobId: number) {
-    return this.http.delete(apiAdminUrl + "delete-job/" + jobId, {
+  // delete existing job
+  deleteJob(jobId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}delete-job/${jobId}`, {
       headers: {
         "Content-Type": "application/json"
       }
-    })
+    });
   }
 
-  //delete schedule item
+  approveSchedule(scheduleId: number): Observable<any> {
+    const params = { scheduleId: scheduleId.toString() };
+    return this.http.post(`${this.apiUrl}approve-schedule-request`, null, { params });
+  }
+
+  declineSchedule(scheduleId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}delete-schedule/${scheduleId}`);
+  }
+
+  // delete schedule item
 }

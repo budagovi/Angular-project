@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,10 @@ const routes: Routes = [
       {
         path: 'sign-up',
         loadComponent: () => import('./register/register.component').then(c => c.RegisterComponent)
+      },
+      { 
+        path: 'schedule',
+        loadComponent: () => import('./schedule/schedule.component').then(m => m.ScheduleComponent)
       },
       {
         path: 'sign-in',
