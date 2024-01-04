@@ -7,12 +7,14 @@ import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.compo
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+// import { ScheduleComponent } from './schedule/schedule.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardAdminComponent,
-    DashboardUserComponent
+    DashboardUserComponent,
   ],
   imports: [
     BrowserModule,

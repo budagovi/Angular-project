@@ -3,6 +3,7 @@ import { AuthService } from './services/auth.service';
 import { AdminService } from './services/admin.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { TokenService } from './services/token.service';
+import { ScheduleService } from './services/schedule.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
     private authService: AuthService,
     private adminService: AdminService,
     private tokenService: TokenService,
+    private ScheduleService: ScheduleService,
     private router: Router
   ) {
     fetch('http://lukabudagovi-001-site1.atempurl.com/api/User/users')
@@ -56,7 +58,7 @@ export class AppComponent {
   }
 
   deleteUser() {
-    this.adminService.deleteUser(81).subscribe(
+    this.adminService.deleteUser(97).subscribe(
       (data) => {
         console.log(data);
       },
