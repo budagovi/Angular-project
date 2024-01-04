@@ -1,0 +1,34 @@
+<div class="table-container">
+  <div class="week-title">{{ generateWeekTitle() }}</div>
+
+  <div class="navigation-buttons">
+    <button class="btn btn-primary" (click)="goBackward()" style="margin-right: 1%">&#171; Previous Week</button>
+    <button class="btn btn-primary" (click)="goForward()">Next Week &#187;</button>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let date of dates">{{ date }}</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th *ngFor="let weekday of weekdays">{{ weekday }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let job of distinctJobTitles">
+      <tr>
+        <th>{{ job.title }}</th>
+        <td *ngFor="let date of dates">
+          <div class="schedule-item" *ngFor="let shift of getShiftForJobTitleAndDate(job.title, date).shifts">
+            <span class="morning-shift" *ngIf="shift.includes('Morning')">{{ shift }}</span>
+            <span class="evening-shift" *ngIf="shift.includes('Evening')">{{ shift }}</span>
+            <div class="divider"></div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
