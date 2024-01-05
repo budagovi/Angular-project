@@ -1,0 +1,32 @@
+<div class="form-content">
+  <div class="form-dialog form-dialog-centered">
+    <div class="form-content">
+      <div class="form-header">
+        <h2 class="form-title">Pending Schedules</h2>
+      </div>
+
+      <div class="form-body">
+        <div *ngIf="unapprovedSchedules && unapprovedSchedules.length > 0">
+          <div *ngFor="let schedule of unapprovedSchedules">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ schedule.firstName }} {{ schedule.lastName }}</h5>
+                <p class="card-text">Date: {{ schedule.date }}</p>
+                <p class="card-text">
+                  Shift: {{ schedule.shift === 'Morning' ? 'Morning' : 'Evening' }}
+                </p>
+
+                <button class="btn btn-success" (click)="approveSchedule(schedule.id)" style="margin-right: 1%">
+                  Approve
+                </button>
+                <button class="btn btn-danger" (click)="declineSchedule(schedule.id)">
+                  Decline
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

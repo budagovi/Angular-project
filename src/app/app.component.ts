@@ -28,12 +28,10 @@ export class AppComponent {
     //   .then(response => response.json())
     //   .then(data => console.log(JSON.stringify(data)));
 
-    // fetch("http://lukabudagovi-001-site1.atempurl.com/api/Admin/delete-user/109", {
+    // fetch("http://lukabudagovi-001-site1.atempurl.com/api/Admin/delete-user/98", {
     //   method: "delete"
     // })
-
-
-    tokenService.getUser();
+    
   }
 
 

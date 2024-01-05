@@ -1,1 +1,15 @@
-<p>dashboard-admin works!</p>
+<h1 class="row justify-content-center mt-4 font-weight-bold">ADMIN</h1>
+
+<app-schedule></app-schedule>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6 text-center">
+      <p>admin works!</p>
+
+      <button class="btn btn-primary" (click)="openScheduleApprovalForm()">Open Pending Schedules</button>
+
+      <app-scheduleform *ngIf="isFormOpen"></app-scheduleform>
+    </div>
+  </div>
+</div>

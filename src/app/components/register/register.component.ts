@@ -103,6 +103,12 @@ export class RegisterComponent {
   typeM: string = ""
   showModal: boolean = false;
   loadingState: boolean = false;
+
+  hideModal() {
+    this.typeM = '';
+    this.showModal = false;
+  }
+
   //submit handler
   onSubmit() {
     this.loadingState = true;
@@ -115,22 +121,25 @@ export class RegisterComponent {
 
     this.registerForm.reset();
 
-    this.authService
-      .register(firstname, lastname, email, password, jobId)
-      .subscribe(
-        (data) => {
-          console.log(data);
-          this.typeM = 'register-scs';
-          this.showModal = true;
-          this.loadingState = false;
-        },
-        (err) => {
-          console.error(err.message);
-          this.typeM = 'register-error';
-          this.showModal = true;
-          this.loadingState = false;
-        }
-      );
+    setTimeout(() => {
+
+      this.authService
+        .register(firstname, lastname, email, password, jobId)
+        .subscribe(
+          (data) => {
+            console.log(data);
+            this.typeM = 'register-scs';
+            this.showModal = true;
+            this.loadingState = false;
+          },
+          (err) => {
+            console.error(err.message);
+            this.typeM = 'register-error';
+            this.showModal = true;
+            this.loadingState = false;
+          }
+        );
+    }, 500)
   }
 
 }

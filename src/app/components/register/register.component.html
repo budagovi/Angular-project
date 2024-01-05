@@ -1,4 +1,4 @@
-<app-modal *ngIf="showModal" [modalType]="typeM"></app-modal>
+<app-modal *ngIf="showModal" [modalType]="typeM" (dataEvent)="hideModal()"></app-modal>
 
 <div *ngIf="fetched" class="wrapper-sign-up">
   <div class="form-wrapper">
