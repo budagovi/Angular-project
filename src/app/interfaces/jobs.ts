@@ -15,9 +15,6 @@ export interface Job {
     isApproved: boolean;
   }
 
-
-
-
   export interface Schedule {
     startTime: string;
     endTime: string;

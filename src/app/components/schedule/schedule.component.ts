@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
-import { ScheduleService } from "../services/schedule.service";
-import { UserService } from "../services/user.service";
-import { FormService } from '../services/form.service';
-import { Job } from '../jobs/jobs';
+import { ScheduleService } from "../../services/schedule.service";
+import { UserService } from "../../services/user.service";
+import { FormService } from '../../services/form.service';
+import { Job } from '../../interfaces/jobs';
 import { CommonModule } from '@angular/common';
 
 
@@ -25,7 +25,7 @@ export class ScheduleComponent implements OnInit {
   constructor(
     private scheduleService: ScheduleService,
     private userService: UserService,
-    private formService : FormService
+    private formService: FormService
   ) {
     this.currentDate = new Date();
   }
