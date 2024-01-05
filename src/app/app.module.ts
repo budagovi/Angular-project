@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-// import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleformComponent } from './scheduleform/scheduleform.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 
 @NgModule({
@@ -15,12 +15,17 @@ import { RouterModule } from '@angular/router';
     AppComponent,
     DashboardAdminComponent,
     DashboardUserComponent,
+    ScheduleformComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ScheduleComponent,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

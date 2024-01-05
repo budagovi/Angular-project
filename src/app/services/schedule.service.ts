@@ -7,7 +7,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 })
 export class ScheduleService {
 
-  private apiUrl = 'http://lukabudagovi-001-site1.atempurl.com/api/User';
+  private apiUrl = 'http://lukabudagovi-001-site1.atempurl.com/api/User/dashboard';
 
   constructor(private http: HttpClient) {}
 
