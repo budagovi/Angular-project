@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { ScheduleService } from '../../services/schedule.service';
 import { UserService } from '../../services/user.service';
+import { ScheduleService } from "../../services/schedule.service";
+import { UserService } from "../../services/user.service";
 import { FormService } from '../../services/form.service';
 import { Job } from '../../interfaces/jobs';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-schedule',
@@ -45,6 +48,7 @@ export class ScheduleComponent implements OnInit {
       const result = await forkJoin([
         this.scheduleService.getAllSchedules(),
         this.userService.getJobs(),
+
       ]).toPromise();
 
       if (result && result.length === 2) {
@@ -59,7 +63,11 @@ export class ScheduleComponent implements OnInit {
         this.generateWeekdaysAndDates();
         this.generateWeekTitle();
       } else {
+
         console.error('Error 404');
+
+        console.error('Error fetching data: Result is undefined or has an unexpected format');
+
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -89,7 +97,11 @@ export class ScheduleComponent implements OnInit {
   }
 
   private getDayOfWeek(day: number): string {
+
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
     return days[day];
   }
 
@@ -99,14 +111,27 @@ export class ScheduleComponent implements OnInit {
   }
 
   getShiftForJobTitleAndDate(jobTitle: string, date: string): { shifts: string[] } {
+
     const schedulesForJobTitle = this.approvedSchedules.filter(schedule => schedule.jobTitle === jobTitle);
 
+    const schedulesForJobTitle = this.approvedSchedules.filter(
+      (schedule) => schedule.jobTitle === jobTitle
+    );
     const uniqueShifts: { [key: string]: string } = {};
 
     schedulesForJobTitle
       .filter(schedule => this.formatDate(new Date(schedule.startTime)) === date)
       .sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
       .forEach(schedule => {
+
+      .filter(
+        (schedule) => this.formatDate(new Date(schedule.startTime)) === date
+      )
+      .sort(
+        (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
+      )
+      .forEach((schedule) => {
+
         const shiftType = this.getShift(schedule.startTime);
         const key = `${shiftType}-${schedule.firstName}-${schedule.lastName}`;
 
@@ -148,6 +173,7 @@ export class ScheduleComponent implements OnInit {
     this.generateWeekdaysAndDates();
   }
 
+
   generateWeekTitle(): string {
     if (!this.dates || this.dates.length === 0) {
       return 'No Dates Available';
@@ -172,6 +198,29 @@ export class ScheduleComponent implements OnInit {
   
     return `${startDateParts[0]} ${endMonth} - ${endDateParts[0]} ${endMonth} [Week #${this.getWeekNumber(this.currentDate)}]`;
   }
+
+
+  generateWeekTitle(): string {
+    const startDate = this.dates[0];
+    const endDate = this.dates[this.dates.length - 1];
+
+    const startDateParts = startDate.split(' ');
+    const endDateParts = endDate.split(' ');
+
+    const startMonth = startDateParts[1];
+    const endMonth = endDateParts[1];
+
+    if (!startMonth || !endMonth) {
+      return 'Invalid Date Format';
+    }
+
+    return `${startDateParts[0]} ${endMonth} - ${endDateParts[0]} ${endMonth} [Week #${this.getWeekNumber(this.currentDate)}]`;
+  }
+
+
+
+
+
   private getWeekNumber(date: Date): number {
     const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
     const dayNum = d.getUTCDay() || 7;
@@ -180,10 +229,18 @@ export class ScheduleComponent implements OnInit {
     return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
   }
 
+
   loadUnapprovedSchedules(): void {
     this.unapprovedSchedules = this.getUnapprovedSchedules();
     this.formService.setUnapprovedSchedules(this.unapprovedSchedules);
     console.log('Unapproved schedules', this.unapprovedSchedules);
+
+
+  loadUnapprovedSchedules(): void {
+    this.unapprovedSchedules = this.getUnapprovedSchedules();
+    this.formService.setUnapprovedSchedules(this.unapprovedSchedules);
+    console.log('unapproved schedules', this.unapprovedSchedules);
+
   }
 
   getUnapprovedSchedules(): any[] {
@@ -203,8 +260,9 @@ export class ScheduleComponent implements OnInit {
     });
   }
 
+
   refreshScheduleComponent(): void {
     this.loadData();
     this.loadUnapprovedSchedules();
   }
-}
+

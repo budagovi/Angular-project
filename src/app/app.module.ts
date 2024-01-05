@@ -7,7 +7,7 @@ import { DashboardUserComponent } from './components/dashboard-user/dashboard-us
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ScheduleformComponent } from './components/scheduleform/scheduleform.component';
-import { ScheduleComponent } from './components/schedule/schedule.component';
+import { ScheduleComponent } from './components/schedule/schedule.componen
 import { ModalComponent } from './components/modal/modal.component';
 // import { ScheduleComponent } from './schedule/schedule.component';
 
@@ -16,8 +16,12 @@ import { ModalComponent } from './components/modal/modal.component';
   declarations: [
     AppComponent,
     DashboardAdminComponent,
+
     DashboardUserComponent,
     ScheduleformComponent
+
+    DashboardUserComponent
+]
   ],
   imports: [
     BrowserModule,

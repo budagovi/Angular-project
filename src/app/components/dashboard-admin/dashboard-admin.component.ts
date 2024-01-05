@@ -1,8 +1,10 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ToastService } from '../../services/toast.service';
 import { UserService } from "../../services/user.service";
 import { FormService } from '../../services/form.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -10,6 +12,7 @@ import { FormService } from '../../services/form.service';
   styleUrls: ['./dashboard-admin.component.css']
 })
 export class DashboardAdminComponent {
+
 
   selectedSchedule: any;
   isFormOpen = false;
@@ -36,6 +39,8 @@ export class DashboardAdminComponent {
     this.toastService.showToast('Form opened successfully!');
   }
 
+
+}
 
 }
 

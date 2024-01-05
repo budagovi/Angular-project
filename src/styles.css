@@ -1,3 +1,4 @@
+
 .custom-toast {
     position: fixed;
     bottom: 20px;
@@ -26,6 +27,7 @@
     background-color: #2196F3; /* Blue */
     color: white;
   }
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap');
 
 
