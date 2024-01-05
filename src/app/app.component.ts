@@ -28,7 +28,7 @@ export class AppComponent {
     //   .then(response => response.json())
     //   .then(data => console.log(JSON.stringify(data)));
 
-    // fetch("http://lukabudagovi-001-site1.atempurl.com/api/Admin/delete-user/93", {
+    // fetch("http://lukabudagovi-001-site1.atempurl.com/api/Admin/delete-user/109", {
     //   method: "delete"
     // })
 

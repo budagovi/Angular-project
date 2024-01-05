@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from '../services/toast.service';
-import { ScheduleService } from '../services/schedule.service';
-import { FormService } from '../services/form.service';
-import { AdminService } from '../services/admin.service';
+import { ToastService } from '../../services/toast.service';
+import { ScheduleService } from '../../services/schedule.service';
+import { FormService } from '../../services/form.service';
+import { AdminService } from '../../services/admin.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

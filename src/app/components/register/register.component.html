@@ -1,0 +1,79 @@
+<app-modal *ngIf="showModal" [modalType]="typeM"></app-modal>
+
+<div *ngIf="fetched" class="wrapper-sign-up">
+  <div class="form-wrapper">
+    <div class="banner">
+      <div class="loader" *ngIf="loadingState">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <h1 [class]="loadingState ? 'hidden' : ''">Sign up</h1>
+      <span [class]="loadingState ? 'hidden' : ''">to use all features</span>
+      <span [class]="loadingState ? 'hidden' : ''">of the application</span>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" [class]="this.loadingState ? 'blocked': ''">
+      <div class="blocker" *ngIf="loadingState"></div>
+      <div class="form-control">
+        <label for="firstname">first name</label>
+        <input type="text" id="firstname" placeholder="Enter your first name" formControlName="firstname"
+          [class]="form.firstname.touched && form.firstname.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
+          (blur)="showErrorMsg()">
+      </div>
+
+      <div class="form-control">
+        <label for="lastname">last name</label>
+        <input type="text" id="lastname" placeholder="Enter your last name" formControlName="lastname"
+          [class]="form.lastname.touched && form.lastname.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
+          (blur)="showErrorMsg()">
+      </div>
+
+      <div class="form-control">
+        <label for="email">email</label>
+        <input type="text" id="email" placeholder="Enter your email" formControlName="email"
+          [class]="form.email.touched && form.email.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
+          (blur)="showErrorMsg()">
+      </div>
+
+      <div class="form-control">
+        <label for="password">password</label>
+        <input type="password" id="password" placeholder="Enter password" formControlName="password"
+          [class]="form.password.touched && form.password.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
+          (blur)="showErrorMsg()">
+      </div>
+
+      <div class="form-control">
+        <label for="confirmPass">confirm password</label>
+        <input type="password" id="confirmPass" placeholder="Confirm password" formControlName="confirmPass"
+          [class]="form.confirmPass.touched && (registerForm.errors?.['mismatch'] || form.confirmPass.invalid) ? 'invalid' : ''"
+          (keyup)="showErrorMsg()" (blur)="showErrorMsg()">
+      </div>
+
+
+      <div class="form-control">
+        <label for="jobId">job</label>
+        <span *ngIf="jobs.length <= 0">No open positions available</span>
+        <select name="jobId" id="jobId" formControlName="jobId"
+          [class]="(selectTouched ? '' : 'untouched ') + (form.jobId.touched && form.jobId.value == 0 ? 'invalid' : '')"
+          *ngIf="jobs.length > 0" (change)="onChangeSelect(); showErrorMsg()" (blur)="showErrorMsg()">
+          <option value="0" hidden disabled selected>Select Position</option>
+          <option *ngFor="let job of jobs" [value]="job.id">
+            {{job.title}}
+          </option>
+        </select>
+      </div>
+
+      <span class="error-msg" [style]="errorMsg==='' ? {visibility: 'hidden'} : {}">{{errorMsg}}!</span>
+      <div class="submit-wrapper">
+        <input type="submit" [disabled]="registerForm.invalid || form.jobId.value==0" value="Sign up">
+        <span>or <a routerLink="/sign-in">Log In</a></span>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ToastService } from '../services/toast.service';
-import { UserService } from "../services/user.service";
-import { FormService } from '../services/form.service';
+import { ToastService } from '../../services/toast.service';
+import { UserService } from "../../services/user.service";
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-dashboard-admin',

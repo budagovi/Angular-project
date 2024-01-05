@@ -1,0 +1,51 @@
+.modal-wrapper {
+  position: fixed;
+  width: 100%;
+  min-height: 100dvh;
+  background-color: #000b;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5rem;
+
+  .modal-container {
+    background-color: #fff;
+    padding: 2rem 5rem;
+    border-radius: 0.2rem;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    animation: slideIn 0.3s ease-out;
+
+    svg {
+      width: 60px;
+      height: 60px;
+      color: var(--darkGreen);
+    }
+
+
+    a {
+      color: var(--darkGreen);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
