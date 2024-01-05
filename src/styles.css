@@ -17,7 +17,6 @@ body {
 
 :root {
   --darkGreen: #00b990;
-  --lightGreen: #00b99168;
   --darkGray: #b9babc;
   --lightGray: #bebebe;
   --errorColor: rgba(255, 0, 0, 0.776);
@@ -39,17 +38,17 @@ body {
 
 
 .success-not {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   color: white;
 }
 
 .error-not {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
   color: white;
 }
 
 
 .info-not {
-  background-color: #2196F3; /* Blue */
+  background-color: #2196F3;
   color: white;
 }

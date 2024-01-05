@@ -1,7 +1,7 @@
 <app-modal *ngIf="showModal" [modalType]="typeM" (dataEvent)="hideModal()"></app-modal>
 
 <div *ngIf="fetched" class="wrapper-sign-up">
-  <div class="form-wrapper">
+  <div [class]="'form-wrapper ' + (loadingState ? 'blocked' : '')">
     <div class="banner">
       <div class="loader" *ngIf="loadingState">
         <div></div>
@@ -12,10 +12,10 @@
       <h1 [class]="loadingState ? 'hidden' : ''">Sign up</h1>
       <span [class]="loadingState ? 'hidden' : ''">to use all features</span>
       <span [class]="loadingState ? 'hidden' : ''">of the application</span>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
+      <div [class]="'circle-1 '+ (loadingState ? 'scaled' : '')"></div>
+      <div [class]="'circle-2 '+ (loadingState ? 'scaled' : '')"></div>
+      <div [class]="'circle-3 '+ (loadingState ? 'scaled' : '')"></div>
+      <div [class]="'circle-4 '+ (loadingState ? 'scaled' : '')"></div>
     </div>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" [class]="this.loadingState ? 'blocked': ''">
       <div class="blocker" *ngIf="loadingState"></div>
@@ -73,6 +73,7 @@
         <input type="submit" [disabled]="registerForm.invalid || form.jobId.value==0" value="Sign up">
         <span>or <a routerLink="/sign-in">Log In</a></span>
       </div>
+      <button (click)="test()" class="testBtn">test</button>
 
     </form>
   </div>

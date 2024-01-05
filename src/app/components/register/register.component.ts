@@ -139,7 +139,12 @@ export class RegisterComponent {
             this.loadingState = false;
           }
         );
-    }, 500)
+    }, 1000)
+  }
+
+
+  test() {
+    this.loadingState = true;
   }
 
 }

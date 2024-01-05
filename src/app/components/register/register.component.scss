@@ -6,13 +6,36 @@
   align-items: center;
 
   .form-wrapper {
-    height: fit-content;
+    width: min(670px, 100%);
+    height: min(640px, 100%);
     display: grid;
     grid-template-columns: 1fr 1.4fr;
     background-color: var(--darkGreen);
     box-shadow: 3px 4px 15px 0px #8c8c8c;
+    overflow: hidden;
 
-    
+    &.blocked {
+      grid-template-columns: 2.4fr 0fr;
+      transition: .7s ease-out;
+
+      form {
+        overflow: hidden;
+        padding: 5rem 0;
+        transition: .7s ease-out;
+
+
+        div {
+          width: 300px;
+          overflow: hidden;
+
+          label {
+            width: 200px;
+          }
+        }
+      }
+
+    }
+
     .banner {
       display: flex;
       flex-direction: column;
@@ -28,6 +51,7 @@
         position: relative;
         width: 80px;
         height: 80px;
+        z-index: 5;
 
         div {
           box-sizing: border-box;
@@ -74,43 +98,68 @@
         }
       }
 
-      .circle {
+      div[class^="circle-"] {
         position: absolute;
         bottom: 0;
         left: 0;
         border-radius: 50%;
       }
 
-      .circle:nth-of-type(1) {
+      .circle-1 {
         width: 250px;
         height: 250px;
         background-color: #00d5a77b;
-        translate: 120px 43px;
+        transform: translate(120px, 43px);
         animation: show 1.5s;
+
+        &.scaled {
+          transform: translate(203px, 12px);
+          animation: scaleCircle 1.2s forwards;
+          transition: .75s linear;
+        }
       }
 
-      .circle:nth-of-type(2) {
+      .circle-2 {
         width: 130px;
         height: 130px;
         background-color: #00d5a7b7;
         translate: 60px -100px;
         animation: show 1.2s;
+
+        &.scaled {
+          transform: translate(70px, -80px);
+          animation: scaleCircle 1.3s forwards;
+          transition: .65s linear;
+        }
+
       }
 
-      .circle:nth-of-type(3) {
+      .circle-3 {
         width: 230px;
         height: 230px;
         background-color: #00d5a7ce;
         translate: -40px 80px;
         animation: show 1s;
+
+        &.scaled {
+          transform: translate(35px, -40px);
+          animation: scaleCircle 1.1s forwards;
+          transition: .6s linear;
+        }
       }
 
-      .circle:nth-of-type(4) {
-        width: 200px;
+      .circle-4 {
+        width: 200px; 
         height: 200px;
         background-color: #00d5a763;
         translate: -100px -70px;
         animation: show 1.4s;
+
+        &.scaled {
+          transform: translate(43px, -120px);
+          animation: scaleCircle 1.4s forwards;
+          transition: .68s linear;
+        }
       }
     }
 
@@ -241,6 +290,20 @@
   }
 }
 
+@keyframes scaleCircle {
+  0% {
+    scale: 1;
+  }
+
+  55% {
+    scale: 1.7;
+  }
+
+  100% {
+    scale: 1.6;
+  }
+}
+
 @keyframes shake {
 
   0%,
@@ -262,7 +325,19 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
+}
+
+.testBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.testBtn:hover {
+  opacity: 1;
 }
