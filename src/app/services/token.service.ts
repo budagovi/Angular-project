@@ -40,7 +40,7 @@ export class TokenService {
   }
 
   //JWT TOKEN DECODER
-  private decodeToken(token: string): any {
+  public decodeToken(token: string): any {
     try {
       //console.log(JSON.parse(atob(token.split('.')[1])))
       return JSON.parse(atob(token.split('.')[1]));

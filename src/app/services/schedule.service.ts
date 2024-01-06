@@ -11,7 +11,7 @@ export class ScheduleService {
   constructor(private http: HttpClient) {}
 
   getAllSchedules(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/schedule`);
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
   private refreshScheduleSubject: BehaviorSubject<{}> = new BehaviorSubject<{}>({});
   refreshSchedule(): void {

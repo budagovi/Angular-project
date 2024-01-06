@@ -1,1 +1,40 @@
-<p>dashboard-user works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center vh-100">
+  
+      <div class="col-12 text-center">
+        <h2 class="mb-4 text-center" style="font-weight: bolder">Worker app-schedule</h2>
+        <app-schedule></app-schedule>
+  
+        <form class="mt-4" (ngSubmit)="addSchedule()" #scheduleForm="ngForm">
+          <div class="row mb-3 justify-content-center">
+            <label for="date" class="col-form-label" style="font-size: 20px;">Choose Date:</label>
+            <div class="col-2" style="margin-right: 5px;">
+              <input type="date" id="date" name="date" [(ngModel)]="scheduleDate" class="form-control" required>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label" style="font-size: 20px;">Shift:</label>
+            <div class="btn-group" role="group" aria-label="Shift Selection" style="margin-left: 1%">
+              <button
+                type="button"
+                (click)="setShift('morning')"
+                [class]="selectedShift === 'morning' ? 'btn btn-primary' : 'btn btn-outline-primary mr-3'"
+              >
+                Morning
+              </button>
+              <button
+                type="button"
+                (click)="setShift('evening')"
+                [class]="selectedShift === 'evening' ? 'btn btn-primary' : 'btn btn-outline-primary'"
+              >
+                Evening
+              </button>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-success">Add Schedule</button>
+        </form>
+      </div>
+    </div>
+  </div>

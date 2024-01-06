@@ -11,28 +11,31 @@ export class NotificationService {
   }
 
   showNotification(message: string): void {
-    this.showNotificationWithClass(message, 'custom-not');
+    this.showNotificationWithClass(message, 'custom-not', 'neutral-not');
   }
 
   showSuccess(message: string): void {
-    this.showNotificationWithClass(message, 'custom-not success-not');
+    this.showNotificationWithClass(message, 'custom-not', 'success-not');
   }
 
   showError(message: string): void {
-    this.showNotificationWithClass(message, 'custom-not error-not');
+    this.showNotificationWithClass(message, 'custom-not',  'error-not');
   }
 
   showInfo(message: string): void {
-    this.showNotificationWithClass(message, 'custom-not info-not');
+    this.showNotificationWithClass(message, 'custom-not', 'info-not');
   }
 
-  private showNotificationWithClass(message: string, cssClass: string): void {
+  private showNotificationWithClass(message: string, ...cssClasses: string[]): void {
     const notification = this.renderer.createElement('div');
-    this.renderer.addClass(notification, cssClass);
+    cssClasses.forEach(cssClass => {
+      this.renderer.addClass(notification, cssClass);
+    });
+  
     this.renderer.appendChild(notification, this.renderer.createText(message));
-
+  
     document.body.appendChild(notification);
-
+  
     setTimeout(() => {
       document.body.removeChild(notification);
     }, 3000);

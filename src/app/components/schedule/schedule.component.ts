@@ -137,41 +137,42 @@ export class ScheduleComponent implements OnInit {
     if (!this.dates || this.dates.length === 0) {
       return 'No Dates Available';
     }
-
+  
     const startDate = this.dates[0];
     const endDate = this.dates[this.dates.length - 1];
-
-
+  
     if (!startDate || !endDate) {
       return 'Invalid Date Format';
     }
-
+  
     const startDateParts = startDate.split(' ');
     const endDateParts = endDate.split(' ');
-
-
-    const startMonth = startDateParts[1];
-    const endMonth = endDateParts[1];
-
-
+  
+    const startMonth = this.getMonthAbbreviation(startDateParts[1]);
+    const endMonth = this.getMonthAbbreviation(endDateParts[1]);
+  
     if (!startMonth || !endMonth) {
       return 'Invalid Date Format';
     }
-
-
-    return `${startDateParts[0]} ${endMonth} - ${endDateParts[0]} ${endMonth} [Week #${this.getWeekNumber(this.currentDate)}]`;
+  
+    const weekNumber = this.getWeekNumber(new Date(this.currentDate)); 
+    return `${startDateParts[0]} ${startMonth} - ${endDateParts[0]} ${endMonth} Week N${weekNumber}`;
   }
-
+  
+  
+  private getMonthAbbreviation(fullMonth: string): string {
+    return fullMonth.substring(0, 3);
+  }
 
 
 
   private getWeekNumber(date: Date): number {
-    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-    const dayNum = d.getUTCDay() || 7;
-    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+    const day = date.getUTCDay() || 7;
+    date.setUTCDate(date.getUTCDate() + 4 - day);
+    const startOfYear = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+    return Math.ceil(((date.getTime() - startOfYear.getTime()) / 86400000 + 1) / 7);
   }
+  
 
 
   loadUnapprovedSchedules(): void {

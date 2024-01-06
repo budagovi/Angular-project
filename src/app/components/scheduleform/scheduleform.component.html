@@ -11,7 +11,8 @@
             <div class="card mb-3">
               <div class="card-body">
                 <h5 class="card-title">{{ schedule.firstName }} {{ schedule.lastName }}</h5>
-                <p class="card-text">Date: {{ schedule.date }}</p>
+                <p class="card-text">Date: {{ schedule.date | date: 'MM/dd/yyyy' }}</p>
+
                 <p class="card-text">
                   Shift: {{ schedule.shift === 'Morning' ? 'Morning' : 'Evening' }}
                 </p>

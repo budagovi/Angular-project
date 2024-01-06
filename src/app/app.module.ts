@@ -13,7 +13,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
   declarations: [
     AppComponent,
     DashboardAdminComponent,
-    DashboardUserComponent,
+    
     ScheduleformComponent
   ],
   imports: [
@@ -21,7 +21,8 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    ScheduleComponent
+    ScheduleComponent,
+    DashboardUserComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
