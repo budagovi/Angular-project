@@ -12,8 +12,6 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  // approve schedule request
-
   // change user role
   changeUserRole(userId: number, newRoleId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}change-user-role`, {
@@ -55,14 +53,16 @@ export class AdminService {
     });
   }
 
+  
+  // approve schedule request
   approveSchedule(scheduleId: number): Observable<any> {
     const params = { scheduleId: scheduleId.toString() };
     return this.http.post(`${this.apiUrl}approve-schedule-request`, null, { params });
   }
 
+    // delete schedule item
   declineSchedule(scheduleId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}delete-schedule/${scheduleId}`);
   }
 
-  // delete schedule item
 }

@@ -20,19 +20,19 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService,
     private tokenService: TokenService,
     private router: Router
-  ) {
-    userService.getUsers().subscribe(
-      (data) => {
-        const arr = Object.values(data);
-        this.users = arr;
-      },
-      (error) => {
-        console.error('Error fetching jobs:', error);
+  ) { }
+
+  ngOnInit() {
+    if (this.tokenService.getToken()) {
+      const role = this.tokenService.getUser().role;
+      if (role === '1') {   
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigate(['/worker']);
       }
-    );
+    }
   }
 
   loginForm = new FormGroup({

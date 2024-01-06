@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
       },
       {
         path: 'admin',
-        component: DashboardAdminComponent
+        component: DashboardAdminComponent,
+        canActivate: [AdminGuard],
       },
       {
         path: 'worker',
