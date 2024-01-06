@@ -7,7 +7,7 @@
 
   .form-wrapper {
     width: min(670px, 100%);
-    height: min(640px, 100%);
+    height: min(560px, 100dvh);
     display: grid;
     grid-template-columns: 1fr 1.4fr;
     background-color: var(--darkGreen);
@@ -20,7 +20,7 @@
 
       form {
         overflow: hidden;
-        padding: 5rem 0;
+        padding: 4rem 0 2rem;
         transition: .7s ease-out;
 
 
@@ -149,7 +149,7 @@
       }
 
       .circle-4 {
-        width: 200px; 
+        width: 200px;
         height: 200px;
         background-color: #00d5a763;
         translate: -100px -70px;
@@ -170,7 +170,7 @@
       align-items: flex-start;
       gap: 1rem;
       background-color: #ffffff;
-      padding: 5rem 3rem;
+      padding: 4rem 3rem 2rem;
       position: relative;
 
       .blocker {
@@ -183,7 +183,7 @@
         cursor: not-allowed;
       }
 
-      div:not([class='submit-wrapper']) {
+      div.form-control {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -198,7 +198,7 @@
           color: #757575;
         }
 
-        input:not([type='submit']),
+        input,
         select {
           appearance: none;
           outline: none;

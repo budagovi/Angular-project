@@ -1,13 +1,51 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div class="form-control">
-    <label for="email">Email:</label>
-    <input type="text" id="email" placeholder="Enter your email" formControlName="email">
-  </div>
+<app-modal *ngIf="showModal" [modalType]="typeM" (dataEvent)="hideModal()"></app-modal>
 
-  <div class="form-control">
-    <label for="password">Password:</label>
-    <input type="password" id="password" placeholder="Enter password" formControlName="password">
-  </div>
 
-  <input type="submit" [disabled]="loginForm.invalid" value="Sign In">
-</form>
+<div class="wrapper-sign-in">
+  <div [class]="'form-wrapper ' + (loadingState ? 'blocked' : '')">
+    <div [class]="'decorator-1 ' + (loadingState ? 'hide' : '')"></div>
+    <div [class]="'decorator-2 ' + (loadingState ? 'hide' : '')"></div>
+    <div [class]="'decorator-3 ' + (loadingState ? 'scaled' : '')"></div>
+    <div [class]="'decorator-4 ' + (loadingState ? 'hide' : '')"></div>
+    <div class="loader" *ngIf="loadingState">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="blocker" *ngIf="loadingState">
+    </div>
+    <h2>Log In</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+        <label for="email">email</label>
+        <input type="text" id="email" placeholder="Enter your email" formControlName="email"
+          [class]="form.email.touched && form.email.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
+          (blur)="showErrorMsg()">
+      </div>
+
+      <div class="form-control">
+        <div class="pass-label-wrapper">
+          <label for="password">password</label>
+          <a href="">forgot password?</a>
+        </div>
+        <input type="password" id="password" placeholder="Enter password" formControlName="password"
+          [class]="form.password.touched && form.password.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
+          (blur)="showErrorMsg()">
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="checkbox" />
+        remember me
+      </label>
+
+      <div class="submit-wrapper">
+        <span class="error-msg" [style]="errorMsg==='' ? {visibility: 'hidden'} : {}">{{errorMsg}}!</span>
+        <input type="submit" [disabled]="loginForm.invalid" value="Sign In">
+      </div>
+    </form>
+    <div class="info">
+      <span>Don't have an account? <a routerLink="/sign-up">Sign up!</a></span>
+    </div>
+  </div>
+</div>
