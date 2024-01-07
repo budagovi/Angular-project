@@ -1,0 +1,29 @@
+.form-content {
+  margin-block: 40px;
+  margin-inline: auto;
+  width: max-content;
+  flex-wrap: wrap;
+  box-shadow: 3px 4px 15px 0px var(--darkGray);
+  background-color: var(--darkGreen);
+  opacity: 0.75;
+  padding: 20px;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.form-content #date{
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+}
+
+.card {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+}
+
+.btn-group button{
+    margin-inline: 10px;
+}

@@ -263,11 +263,12 @@
           background-color: var(--darkGreen);
           border: 0;
           outline: 0;
+          background: rgb(84, 224, 194);
+          border-radius: 0.9rem;
+          transition: all ease-in-out 0.2s;
           color: #fff;
-          padding: 0.5rem 2rem;
-          border-radius: 4rem;
           font-size: 16px;
-          transition: .15s ease-in;
+          padding: 0.5rem 2rem;
           cursor: pointer;
         }
 
@@ -275,6 +276,34 @@
           background-color: #bababa;
           cursor: not-allowed;
         }
+        
+        input[type='submit']:not(:disabled):hover {
+          background: rgba(144, 224, 207);
+          background: linear-gradient(
+            90deg,
+            rgba(0, 185, 144, 1) 0%,
+            rgba(144, 224, 207, 1) 100%
+          );
+          background-size: 200% auto;
+          -webkit-animation: pulse 2s infinite;
+          animation: pulse 1.5s infinite;
+          box-shadow: none;
+        }
+        
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 #05bada66;
+          }
+        
+          70% {
+            box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+          }
+        
+          100% {
+            box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+          }
+        }
+        
 
         a {
           font-weight: 500;

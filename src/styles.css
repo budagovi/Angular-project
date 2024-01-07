@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
 
-
+/* General CSS */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 body {
@@ -15,14 +15,16 @@ body {
   align-items: center;
 }
 
+/* Colors */
 :root {
   --darkGreen: #00b990;
   --darkGray: #b9babc;
   --lightGray: #bebebe;
   --errorColor: rgba(255, 0, 0, 0.776);
+  --acceptColor: #3cc83a;
 }
 
-/* NOTIICATION STYLING*/
+/* Notification CSS */
 
 .custom-not {
   position: absolute;
@@ -41,34 +43,40 @@ body {
 }
 
 @keyframes slideDown {
-  0%, 100% { transform: translateY(-50px); }
-  20%, 80% { transform: translateY(0px); }
+  0%,
+  100% {
+    transform: translateY(-50px);
+  }
+  20%,
+  80% {
+    transform: translateY(0px);
+  }
 }
 
-
+.success-not,
+.error-not,
+.info-not,
+.neutral-not {
+  color: white;
+}
 
 .success-not {
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--acceptColor);
 }
 
 .error-not {
-  background-color: #f44336;
-  color: white;
+  background-color: var(--errorColor);
 }
 
-
 .info-not {
-  background-color: #2196F3;
-  color: white;
+  background-color: #2196f3;
 }
 
 .neutral-not {
   background-color: #343a40;
-  color: #fff;
 }
 
-/* BACKGROUND */
+/* Background CSS */
 body > svg {
   position: fixed;
   top: 0;
@@ -110,4 +118,98 @@ body > svg {
   animation: rotate 15s linear infinite;
   transform-origin: 84px 93px;
   fill: #00b9916d;
+}
+
+/* Button CSS */
+.btn {
+  border: none;
+  border-radius: 0.9rem;
+  padding: 0.6em 0.8em;
+  transition: all ease-in-out 0.2s;
+  color: #fff;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-size: 200% auto;
+  -webkit-animation: pulseGeneral 2s infinite;
+  animation: pulseGeneral 1.5s infinite;
+  box-shadow: none;
+}
+
+.general-btn {
+  background: rgb(84, 224, 194);
+}
+
+.general-btn:hover {
+  background: rgb(0, 113, 88);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 185, 144, 1) 0%,
+    rgba(144, 224, 207, 1) 100%
+  );
+}
+
+.green-btn {
+  background-color: var(--acceptColor);
+}
+
+.green-btn:hover {
+  background-size: 200% auto;
+  -webkit-animation: pulseGreen 2s infinite;
+  animation: pulseGreen 1.5s infinite;
+  box-shadow: none;
+}
+
+.red-btn {
+  background-color: var(--errorColor);
+}
+
+.red-btn:hover {
+  background-size: 200% auto;
+  -webkit-animation: pulseRed 2s infinite;
+  animation: pulseRed 1.5s infinite;
+  box-shadow: none;
+}
+
+@keyframes pulseGeneral {
+  0% {
+    box-shadow: 0 0 0 0 var(--darkGreen);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+}
+
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 var(--acceptColor);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+}
+
+@keyframes pulseRed {
+  0% {
+    box-shadow: 0 0 0 0 var(--errorColor);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
 }

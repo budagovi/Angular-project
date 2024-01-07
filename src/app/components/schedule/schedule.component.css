@@ -1,5 +1,12 @@
 .table-container {
-  margin-top: 20px;
+  margin-block: 40px;
+  margin-inline: auto;
+  width: max-content;
+  flex-wrap: wrap;
+  box-shadow: 3px 4px 15px 0px var(--darkGray);
+  background-color: #ffffffa0;
+  padding: 1.5%;
+  border-radius: 0.5rem;
 }
 
 .week-title {
@@ -12,46 +19,49 @@
   margin-bottom: 20px;
 }
 
+.navigation-buttons button {
+  margin-right: 10px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
-  border: 1px solid #ddd;
+th,
+td {
+  border: 1px solid var(--lightGray);
   padding: 8px;
   text-align: left;
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: var(--darkGreen);
+  opacity: 0.75;
+  color: white;
+  text-transform: capitalize;
 }
 
 .schedule-item {
-  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-block: 2.5px;
 }
 
-.morning-shift, .evening-shift {
+.morning-shift,
+.evening-shift {
   padding: 2px 5px;
   border-radius: 3px;
   margin-right: 5px;
+  color: #fff;
+  text-transform: capitalize;
 }
 
 .morning-shift {
-  background-color: #5cb85c; /* Green for morning shift */
-  color: #fff;
+  background-color: var(--acceptColor);
 }
 
 .evening-shift {
-  background-color: #d9534f; /* Red for evening shift */
-  color: #fff;
-}
-
-.divider {
-  display: inline-block;
-  width: 5px;
-}
-
-.navigation-buttons button {
-  margin-right: 10px;
+  background-color: var(--errorColor);
 }

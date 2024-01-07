@@ -1,14 +1,12 @@
-<h1 class="row justify-content-center mt-4 font-weight-bold">ADMIN</h1>
+<h1 style="display: flex; font-weight: bold; margin-left: 20px;">ADMIN</h1>
 
 <app-schedule></app-schedule>
 
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6 text-center">
+  <div style="display: flex; justify-content: center; ">
+    <div style="text-align: center;">
       <p></p>
-
-      <button class="btn btn-primary" (click)="openScheduleApprovalForm()">Open Pending Schedules</button>
-
+      <button class="btn general-btn" (click)="openScheduleApprovalForm()">Open Pending Schedules</button>
       <app-scheduleform *ngIf="isFormOpen"></app-scheduleform>
     </div>
   </div>

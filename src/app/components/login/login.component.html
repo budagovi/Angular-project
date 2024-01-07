@@ -18,7 +18,7 @@
     <h2>Log In</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-control">
-        <label for="email">email</label>
+        <label for="email">Email</label>
         <input type="text" id="email" placeholder="Enter your email" formControlName="email"
           [class]="form.email.touched && form.email.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
           (blur)="showErrorMsg()">
@@ -26,8 +26,8 @@
 
       <div class="form-control">
         <div class="pass-label-wrapper">
-          <label for="password">password</label>
-          <a href="">forgot password?</a>
+          <label for="password">Password</label>
+          <a href="">Forgot password?</a>
         </div>
         <input type="password" id="password" placeholder="Enter password" formControlName="password"
           [class]="form.password.touched && form.password.invalid ? 'invalid' : ''" (keyup)="showErrorMsg()"
@@ -36,7 +36,7 @@
 
       <label class="checkbox-label">
         <input type="checkbox" name="checkbox" />
-        remember me
+        Remember me
       </label>
 
       <div class="submit-wrapper">
