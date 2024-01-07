@@ -21,7 +21,7 @@ export class ScheduleformComponent implements OnInit {
         this.fetchUnapprovedSchedules();
       }
     });
-
+    console.log(this.unapprovedSchedules)
   }
 
   constructor(

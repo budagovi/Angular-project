@@ -34,7 +34,7 @@ export class DashboardAdminComponent {
       this.isFormOpen = false;
     }
 
-    this.notificationService.showNotification('Form opened successfully!');
+    this.notificationService.showNotification('Pending Schedules Opened successfully!');
   }
 
 

@@ -24,17 +24,27 @@ body {
 
 /* NOTIICATION STYLING*/
 
-.custom-toast {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.custom-not {
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fde073;
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden;
+  animation: slideDown 3s ease-in-out forwards;
+  -webkit-box-shadow: 0 0 5px black;
+  -moz-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black;
 }
+
+@keyframes slideDown {
+  0%, 100% { transform: translateY(-50px); }
+  20%, 80% { transform: translateY(0px); }
+}
+
 
 
 .success-not {
@@ -65,6 +75,7 @@ body > svg {
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: -5;
 }
 
 @keyframes rotate {

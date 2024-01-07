@@ -2,24 +2,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
-import { ScheduleComponent } from './components/schedule/schedule.component';
 import { AdminGuard } from './guards/admin.guard';
+import { WorkerGuard } from './guards/worker.guard';
 
 const routes: Routes = [
   {
     path: '', children: [
       {
+        path: '',
+        loadComponent: () => import('./components/login/login.component').then(c => c.LoginComponent)
+      },
+
+      {
         path: 'sign-up',
         loadComponent: () => import('./components/register/register.component').then(c => c.RegisterComponent)
       },
-      {
-        path: 'schedule',
-        loadComponent: () => import('./components/schedule/schedule.component').then(m => m.ScheduleComponent)
-      },
-      {
-        path: 'sign-in',
-        loadComponent: () => import('./components/login/login.component').then(c => c.LoginComponent)
-      },
+      
       {
         path: 'admin',
         component: DashboardAdminComponent,
@@ -27,7 +25,8 @@ const routes: Routes = [
       },
       {
         path: 'worker',
-        component: DashboardUserComponent
+        component: DashboardUserComponent,
+        canActivate: [WorkerGuard],
       },
     ]
   },

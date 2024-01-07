@@ -13,6 +13,7 @@ export interface DisplaySchedule {
   userLastName: string;
   jobTitle: string;
   isApproved: boolean;
+  date: string;
 }
 
 export interface Schedule {
@@ -21,4 +22,5 @@ export interface Schedule {
   userId: number;
   jobId: number;
   isApproved: boolean;
+  date: string;
 }

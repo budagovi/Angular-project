@@ -26,6 +26,7 @@ export class NotificationService {
     this.showNotificationWithClass(message, 'custom-not', 'info-not');
   }
 
+
   private showNotificationWithClass(message: string, ...cssClasses: string[]): void {
     const notification = this.renderer.createElement('div');
     cssClasses.forEach(cssClass => {

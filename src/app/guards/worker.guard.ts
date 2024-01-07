@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenService } from '../services/token.service';
+import { NotificationService } from '../services/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class WorkerGuard implements CanActivate {
   constructor(
     private router: Router,
     private tokenService: TokenService,
+    private notificationService : NotificationService
   ) { }
 
   canActivate(
@@ -21,7 +23,8 @@ export class WorkerGuard implements CanActivate {
     if (role === '2') {
       return true;
     } else {
-      this.router.navigate(['/sign-in']);
+      this.router.navigate(['']);
+      this.notificationService.showError('You do not have an access!');
       return false;
     }
   }

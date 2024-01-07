@@ -36,7 +36,9 @@ export class ScheduleComponent implements OnInit {
     this.scheduleService.getRefreshScheduleObservable().subscribe(() => {
       this.loadData();
       this.loadUnapprovedSchedules();
+      
     });
+    
   }
   async loadData() {
     try {
@@ -71,7 +73,7 @@ export class ScheduleComponent implements OnInit {
       const date = new Date(this.currentDate);
       date.setDate(this.currentDate.getDate() + dayOffset);
       this.weekdays.push(this.getDayOfWeek(date.getDay()));
-      this.dates.push(this.formatDate(date));
+      this.dates.push(this.formatDate(date)); 
     }
     this.dates.sort((a, b) => {
       const dateA = new Date(a);
@@ -173,7 +175,7 @@ export class ScheduleComponent implements OnInit {
     return Math.ceil(((date.getTime() - startOfYear.getTime()) / 86400000 + 1) / 7);
   }
   
-
+    
 
   loadUnapprovedSchedules(): void {
     this.unapprovedSchedules = this.getUnapprovedSchedules();
