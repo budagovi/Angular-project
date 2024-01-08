@@ -21,7 +21,7 @@ export class ScheduleformComponent implements OnInit {
         this.fetchUnapprovedSchedules();
       }
     });
-    console.log(this.unapprovedSchedules)
+    
   }
 
   constructor(
@@ -35,7 +35,7 @@ export class ScheduleformComponent implements OnInit {
     console.log('Before calling approveSchedule API');
     this.adminService.approveSchedule(id).subscribe(
       {
-        next: (response) => {
+        next: () => {
           console.log('After successful approval API response');
           this.notificationService.showSuccess('Schedule approved successfully!');
           this.fetchUnapprovedSchedules();
@@ -49,11 +49,11 @@ export class ScheduleformComponent implements OnInit {
     );
     console.log('After calling approveSchedule API');
   }
-
+  
   declineSchedule(id: number): void {
     this.adminService.declineSchedule(id).subscribe(
       {
-        next: (response) => {
+        next: () => {
           this.notificationService.showInfo('Schedule declined successfully!');
           this.fetchUnapprovedSchedules();
           this.formService.closeForm();
@@ -66,6 +66,7 @@ export class ScheduleformComponent implements OnInit {
       }
     );
   }
+  
 
   closeForm() {
     this.formService.closeForm();

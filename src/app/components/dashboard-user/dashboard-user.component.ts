@@ -35,7 +35,7 @@ export class DashboardUserComponent implements OnInit {
 
   createForm() {
     this.scheduleForm = this.fb.group({
-      date: ['', Validators.required],
+      date: [''],
       startTime: [''],
       endTime: [''],
       userId: [0]
@@ -46,8 +46,8 @@ export class DashboardUserComponent implements OnInit {
     this.selectedShift = shift;
 
     const shiftTimes = {
-      morning: { startTime: '08:00', endTime: '16:00' },
-      evening: { startTime: '16:00', endTime: '23:00' }
+      morning: { startTime: '10:00', endTime: '18:00' },
+      evening: { startTime: '18:00', endTime: '04:00' }
     };
 
     this.scheduleForm.patchValue(shiftTimes[shift]);
@@ -78,7 +78,7 @@ export class DashboardUserComponent implements OnInit {
       userId: user.userId
     };
 
-    console.log('Schedule Data:', scheduleData);
+   
 
     this.userService.addScheduleRequest(scheduleData).subscribe({
       next: (response) => {

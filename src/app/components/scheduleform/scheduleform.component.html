@@ -2,12 +2,12 @@
   <h2 class="form-title">Pending Schedules</h2>
 
   <div class="form-body">
-    <div *ngIf="unapprovedSchedules && unapprovedSchedules.length > 1">
+    <div *ngIf="unapprovedSchedules && unapprovedSchedules.length > 0">
       <div *ngFor="let schedule of unapprovedSchedules">
         <div class="card">
 
           <h4>{{ schedule.firstName }} {{ schedule.lastName }}</h4>
-          <p>Date: {{ schedule.date }}</p>
+          <p>Date: {{ schedule.startTime | date : 'mediumDate'}}</p>
 
           <p>
             Shift: {{ schedule.shift === 'Morning' ? 'Morning' : 'Evening' }}
