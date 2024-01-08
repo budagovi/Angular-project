@@ -4,8 +4,7 @@
   width: max-content;
   flex-wrap: wrap;
   box-shadow: 3px 4px 15px 0px var(--darkGray);
-  background-color: var(--darkGreen);
-  opacity: 0.75;
+  background-color: #00b991b2;
   padding: 20px;
   border-radius: 0.5rem;
   color: white;
