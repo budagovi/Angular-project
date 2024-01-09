@@ -12,12 +12,11 @@ import { ScheduleService } from './services/schedule.service';
 })
 export class AppComponent {
   title = 'ng-project';
+  
 
   constructor(
-    private authService: AuthService,
     private adminService: AdminService,
     private tokenService: TokenService,
-    private ScheduleService: ScheduleService,
     private router: Router
   ) {
     fetch('http://lukabudagovi-001-site1.atempurl.com/api/User/users')
@@ -31,6 +30,22 @@ export class AppComponent {
     // fetch("http://lukabudagovi-001-site1.atempurl.com/api/Admin/delete-user/281", {
     //   method: "delete"
     // })
+  }
+
+  userName = '';
+  userSurname = '';
+  userRole = '';
+
+  ngOnInit() {
+    if(this.tokenService.getToken()) {
+      const {firstName, lastname, role} = this.tokenService.getUser();
+      this.userName = firstName;
+      this.userSurname = lastname;
+      if(role == 1)
+        this.userRole = 'Admin';
+      else
+        this.userRole = 'Worker';
+    }
   }
 
 

@@ -1,6 +1,11 @@
+.worker-panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form-content {
-  margin-block: 40px;
-  margin-inline: auto;
+  margin-block: 40px; 
   width: max-content;
   flex-wrap: wrap;
   box-shadow: 3px 4px 15px 0px var(--darkGray);

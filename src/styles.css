@@ -133,7 +133,7 @@ body > svg {
 .btn:hover {
   background-size: 200% auto;
   -webkit-animation: pulseGeneral 2s infinite;
-  animation: pulseGeneral 1.5s infinite;
+  animation: pulseGeneral 1.2s infinite;
   box-shadow: none;
 }
 
@@ -157,7 +157,7 @@ body > svg {
 .green-btn:hover {
   background-size: 200% auto;
   -webkit-animation: pulseGreen 2s infinite;
-  animation: pulseGreen 1.5s infinite;
+  animation: pulseGreen 1.2s infinite;
   box-shadow: none;
 }
 
@@ -168,7 +168,7 @@ body > svg {
 .red-btn:hover {
   background-size: 200% auto;
   -webkit-animation: pulseRed 2s infinite;
-  animation: pulseRed 1.5s infinite;
+  animation: pulseRed 1.2s infinite;
   box-shadow: none;
 }
 
@@ -178,7 +178,7 @@ body > svg {
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+    box-shadow: 0 0 0 5px rgb(218 103 68 / 0%);
   }
 
   100% {
@@ -192,7 +192,7 @@ body > svg {
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+    box-shadow: 0 0 0 5px rgb(218 103 68 / 0%);
   }
 
   100% {
@@ -206,7 +206,7 @@ body > svg {
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+    box-shadow: 0 0 0 5px rgb(218 103 68 / 0%);
   }
 
   100% {
