@@ -2,9 +2,12 @@
 
 /* General CSS */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
   font-family: "Rubik", sans-serif;
 }
 
@@ -13,6 +16,7 @@ body {
   min-height: 100dvh;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 /* Colors */
@@ -20,8 +24,23 @@ body {
   --darkGreen: #00b990;
   --darkGray: #b9babc;
   --lightGray: #bebebe;
-  --errorColor: rgba(255, 0, 0, 0.776);
+  --errorColor: #ff3434;
   --acceptColor: #3cc83a;
+}
+
+/*Scroll Bar  CSS*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #777;
+  border-radius: 2rem;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
 
 /* Notification CSS */
@@ -135,41 +154,51 @@ body > svg {
   -webkit-animation: pulseGeneral 2s infinite;
   animation: pulseGeneral 1.2s infinite;
   box-shadow: none;
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(0.95);
 }
 
 .general-btn {
-  background: rgb(84, 224, 194);
+  background: rgb(52, 220, 183);
 }
 
 .general-btn:hover {
-  background: rgb(0, 113, 88);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 185, 144, 1) 0%,
-    rgba(144, 224, 207, 1) 100%
-  );
+  background: rgb(1, 167, 131);
 }
 
 .green-btn {
-  background-color: var(--acceptColor);
+  background-color:  #82da81;
 }
 
 .green-btn:hover {
+  background-color:  #3cc83a;
   background-size: 200% auto;
   -webkit-animation: pulseGreen 2s infinite;
   animation: pulseGreen 1.2s infinite;
   box-shadow: none;
 }
 
+.green-btn:focus { 
+  background-color:  #3cc83a;
+}
+
 .red-btn {
-  background-color: var(--errorColor);
+  background-color: #f78d8d;
 }
 
 .red-btn:hover {
+  background-color:  #ff3434;
   background-size: 200% auto;
   -webkit-animation: pulseRed 2s infinite;
   animation: pulseRed 1.2s infinite;
   box-shadow: none;
+}
+
+.red-btn:focus { 
+  background-color:  #ff3434;
 }
 
 @keyframes pulseGeneral {

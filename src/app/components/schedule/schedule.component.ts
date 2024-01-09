@@ -184,6 +184,10 @@ export class ScheduleComponent implements OnInit {
   }
 
   getUnapprovedSchedules(): any[] {
+    if (!this.unapprovedSchedules || this.unapprovedSchedules.length === 0) {
+      return [];
+    }
+  
     return this.unapprovedSchedules.map(schedule => {
       const { id, firstName, lastName, jobTitle, startTime } = schedule;
       const shift = this.getShift(startTime);
@@ -198,7 +202,7 @@ export class ScheduleComponent implements OnInit {
       };
     });
   }
-
+  
 
   refreshScheduleComponent(): void {
     this.loadData();
