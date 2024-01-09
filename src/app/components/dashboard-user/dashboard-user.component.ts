@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NotificationService } from '../../services/notification.service';
 import { UserService } from '../../services/user.service';
 import { ScheduleComponent } from "../schedule/schedule.component";
-import { TokenService } from '../../services/token.service'; 
+import { TokenService } from '../../services/token.service';
 
 @Component({
-    selector: 'app-dashboard-user',
-    templateUrl: './dashboard-user.component.html',
-    styleUrls: ['./dashboard-user.component.css'],
-    standalone: true,
-    imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        ScheduleComponent
-    ]
+  selector: 'app-dashboard-user',
+  templateUrl: './dashboard-user.component.html',
+  styleUrls: ['./dashboard-user.component.css'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    ScheduleComponent
+  ]
 })
 export class DashboardUserComponent implements OnInit {
   users: any[] = [];
@@ -27,7 +27,7 @@ export class DashboardUserComponent implements OnInit {
     private fb: FormBuilder,
     private notificationService: NotificationService,
     private tokenService: TokenService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -78,7 +78,7 @@ export class DashboardUserComponent implements OnInit {
       userId: user.userId
     };
 
-   
+
 
     this.userService.addScheduleRequest(scheduleData).subscribe({
       next: (response) => {

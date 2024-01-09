@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
 import { AdminGuard } from './guards/admin.guard';
 import { WorkerGuard } from './guards/worker.guard';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
   {
@@ -20,12 +19,12 @@ const routes: Routes = [
       
       {
         path: 'admin',
-        component: DashboardAdminComponent,
+        loadChildren: () => import('./components/dashboard-admin/admin.module').then(m => m.AdminModule),
         canActivate: [AdminGuard],
       },
       {
         path: 'worker',
-        component: DashboardUserComponent,
+        loadComponent: () => import('./components/dashboard-user/dashboard-user.component').then(c => c.DashboardUserComponent),
         canActivate: [WorkerGuard],
       },
     ]

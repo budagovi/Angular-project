@@ -36,7 +36,7 @@ export class AppComponent {
   userSurname = '';
   userRole = '';
 
-  ngOnInit() {
+  ngDoCheck() {
     if(this.tokenService.getToken()) {
       const {firstName, lastname, role} = this.tokenService.getUser();
       this.userName = firstName;

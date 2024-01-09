@@ -4,7 +4,9 @@
   <div>
     <div style="text-align: center;">
       <p></p>
-      <button class="btn general-btn" (click)="openScheduleApprovalForm()">Open Pending Schedules</button>
+      <button class="btn general-btn" (click)="openScheduleApprovalForm()">Open Pending Schedules
+        <div class="counter">{{numRequests}}</div>
+      </button>
       <app-scheduleform *ngIf="isFormOpen"></app-scheduleform>
     </div>
   </div>

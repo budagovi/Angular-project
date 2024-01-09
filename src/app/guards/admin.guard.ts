@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
       return true;
     } else {
         this.router.navigate(['']);
-      this.notificationService.showError('You do not have an access!');
+      this.notificationService.showError('You do not have access to this link!');
       return false;
     }
   }

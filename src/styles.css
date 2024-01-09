@@ -17,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Colors */
@@ -46,7 +47,7 @@ body {
 /* Notification CSS */
 
 .custom-not {
-  position: absolute;
+  position: fixed;
   z-index: 101;
   top: 0;
   left: 0;
@@ -147,6 +148,7 @@ body > svg {
   transition: all ease-in-out 0.2s;
   color: #fff;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .btn:hover {

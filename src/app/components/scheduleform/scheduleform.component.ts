@@ -7,7 +7,7 @@ import { AdminService } from '../../services/admin.service';
 @Component({
   selector: 'app-scheduleform',
   templateUrl: './scheduleform.component.html',
-  styleUrls: ['./scheduleform.component.css'],
+  styleUrls: ['./scheduleform.component.css']
 })
 
 export class ScheduleformComponent implements OnInit {

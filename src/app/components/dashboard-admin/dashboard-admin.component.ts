@@ -1,7 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
 import {  NotificationService  } from '../../services/notification.service';
-import { UserService } from "../../services/user.service";
 import { FormService } from '../../services/form.service';
 
 @Component({
@@ -15,8 +13,6 @@ export class DashboardAdminComponent {
   selectedSchedule: any;
   isFormOpen = false;
   constructor(
-    private userService: UserService,
-    private fb: FormBuilder,  
     private notificationService: NotificationService,
     public FormService: FormService
   ) { }
@@ -36,6 +32,9 @@ export class DashboardAdminComponent {
 
     this.notificationService.showNotification('Pending Schedules Opened successfully!');
   }
+
+  request = this.FormService.getUnapprovedSchedules();
+  numRequests = this.request.length
 
 
 }
